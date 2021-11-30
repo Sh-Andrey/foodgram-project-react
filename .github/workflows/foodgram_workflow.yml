@@ -67,6 +67,7 @@ jobs:
             echo POSTGRES_PORT=${{ secrets.POSTGRES_PORT }} >> .env
             echo DEBUG=${{ secrets.DEBUG }} >> .env
             echo HOST_LIST=${{ secrets.HOST_LIST }} >> .env
+            sudo docker-compose down -v && docker rmi -f $(docker images -a -q)
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}
             sudo docker-compose stop
             sudo docker-compose rm backend
