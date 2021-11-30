@@ -141,7 +141,7 @@ class UserViewSet(viewsets.ModelViewSet):
                     }
                 )
                 return Response(
-                    serializer.data, 
+                    serializer.data,
                     status=status.HTTP_201_CREATED
                 )
         if request.method == 'DELETE' and subscription.exists():

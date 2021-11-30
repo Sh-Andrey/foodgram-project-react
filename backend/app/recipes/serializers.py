@@ -80,11 +80,11 @@ class RecipeSerializer(serializers.ModelSerializer):
                     'Ингридиенты не должны повторяться'
                 )
             available_ingredients[ingredient['ingredient']] = True
-            
+
         if data['cooking_time'] <= 0:
             raise ValidationError(
                 'Время готовки должно быть больше нуля'
-            )      
+            )
 
         return data
 

@@ -79,7 +79,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
             status=status.HTTP_400_BAD_REQUEST
         )
 
-    def create_cart(sender, instance, **kwargs):
+    def create_cart(self, sender, instance, **kwargs):
         Cart.objects.get_or_create(user=instance)
 
     post_save.connect(create_cart, sender=User)
@@ -122,8 +122,8 @@ class RecipeViewSet(viewsets.ModelViewSet):
         permission_classes=[permissions.IsAuthenticated]
     )
     def download_shopping_cart(self, request):
-        TITLE = 'СПИСОК ПОКУПОК'
-        PDF_TITLE = 'СПИСОК ПОКУПОК ДЛЯ РЕЦЕПТОВ'
+        title = 'СПИСОК ПОКУПОК'
+        pdf_title = 'СПИСОК ПОКУПОК ДЛЯ РЕЦЕПТОВ'
 
         user = request.user
         response = HttpResponse(content_type='application/pdf')
@@ -131,9 +131,9 @@ class RecipeViewSet(viewsets.ModelViewSet):
         response['Content-Disposition'] = content_disposition
         pdfmetrics.registerFont(TTFont('Dej', 'DejaVuSans.ttf'))
         pdf = Canvas(response)
-        pdf.setTitle(PDF_TITLE)
+        pdf.setTitle(pdf_title)
         pdf.setFont('Dej', 20)
-        pdf.drawCentredString(290, 720, TITLE)
+        pdf.drawCentredString(290, 720, title)
         pdf.setFont('Dej', 16)
         pdf.line(30, 710, 565, 710)
         height = 670
