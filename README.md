@@ -1,4 +1,4 @@
-![example workflow](https://github.com/Sh-Andrey/foodgram-project-react/actions/workflows/yamdb_workflow.yaml/badge.svg)
+![foodgram workflow](https://github.com/Sh-Andrey/foodgram-project-react/actions/workflows/yamdb_workflow.yaml/badge.svg)
 
 ## Дипломный проект по курсу Python-разработчик от Яндекс.Практикума — «Продуктовый помощник».
 ## Краткое описание.
