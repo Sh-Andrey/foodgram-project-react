@@ -9,8 +9,9 @@ services:
       - ../infra/.env
 
   backend:
-    build: ../backend
-    image: zerooneid/foodgram:latest
+    build:
+      context: ../backend/
+      dockerfile: Dockerfile
     restart: always
     volumes:
       - static_value:/code/static/

@@ -1,4 +1,4 @@
-![foodgram workflow](https://github.com/Sh-Andrey/foodgram-project-react/actions/workflows/yamdb_workflow.yaml/badge.svg)
+![foodgram workflow](https://github.com/Sh-Andrey/foodgram-project-react/actions/workflows/foodgram_workflow.yaml/badge.svg)
 
 ## Дипломный проект по курсу Python-разработчик от Яндекс.Практикума — «Продуктовый помощник».
 ## Краткое описание.
@@ -43,7 +43,7 @@ HOSTS_LIST=127.0.0.1, localhost
 ### Запуск контейнеров:
 - Перейдите в папку infra и запустите команду:
 ```
-sudo docker-compose up -d
+sudo docker-compose-local up -d
 ```
 - После сборки всех контейнеров нужно запустить скрип install.sh:
 ```
@@ -60,7 +60,7 @@ http://<ip>/api/docs/
 
 ### Уже развернутый проект можно посмотреть по ссылке:
 ```
-http:// /
+http://51.250.23.23/
 ```
 
 ## Использование CI/CD:
@@ -74,15 +74,16 @@ POSTGRES_PASSWORD=postgres
 POSTGRES_HOST=db
 POSTGRES_PORT=5432
 DEBUG=False / True
-HOSTS_LIST=127.0.0.1, localhost
+HOSTS_LIST=127.0.0.1, backend, 51.250.23.23
 
 DOCKER_PASSWORD=<пароль DockerHub>
 DOCKER_USERNAME=<имя пользователя DockerHub>
+DOCKER_REPO=<имя репо>
 
 USER=<username для подключения к серверу>
 HOST=<IP сервера>
-PASSPHRASE=<пароль для сервера, если он установлен>
 SSH_KEY=<ваш SSH ключ (для получения команда: cat ~/.ssh/id_rsa)>
+PASSPHRASE=<пароль для сервера, если он установлен>
 
 TELEGRAM_TO=<ID своего телеграм-аккаунта>
 TELEGRAM_TOKEN=<токен вашего бота>
