@@ -79,7 +79,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
             status=status.HTTP_400_BAD_REQUEST
         )
 
-    def create_cart(self, sender, instance, **kwargs):
+    def create_cart(sender, instance, **kwargs):
         Cart.objects.get_or_create(user=instance)
 
     post_save.connect(create_cart, sender=User)
