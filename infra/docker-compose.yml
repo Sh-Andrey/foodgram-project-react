@@ -9,7 +9,6 @@ services:
       - .env
 
   backend:
-    build: ../backend
     image: zerooneid/foodgram:latest
     restart: always
     volumes:
