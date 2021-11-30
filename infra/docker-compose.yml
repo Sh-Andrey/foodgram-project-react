@@ -6,7 +6,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
-      - ../infra/.env
+      - ../.env
 
   backend:
     build: ../backend
@@ -18,7 +18,7 @@ services:
     depends_on:
       - db
     env_file:
-      - ../infra/.env
+      - ../.env
 
   frontend:
     build:
