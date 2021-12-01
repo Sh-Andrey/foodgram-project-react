@@ -48,8 +48,8 @@ class LikesInline(admin.TabularInline):
 class IngredientAmountInline(admin.TabularInline):
     model = IngredientAmount
     fk_name = 'recipe'
-    verbose_name = 'Ингридиент'
-    verbose_name_plural = 'Ингридиенты'
+    verbose_name = 'Ингредиент'
+    verbose_name_plural = 'Ингредиент'
 
 
 @admin.register(Recipe)

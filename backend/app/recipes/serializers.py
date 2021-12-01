@@ -65,7 +65,7 @@ class RecipeSerializer(serializers.ModelSerializer):
         for tag in tags:
             if tag in available_tags:
                 raise ValidationError(
-                    'Посторяющиеся теги недопустимы'
+                    'Повторяющиеся теги недопустимы'
                 )
             available_tags['tag'] = True
 

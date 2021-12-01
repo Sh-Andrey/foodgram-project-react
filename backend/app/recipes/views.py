@@ -141,7 +141,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
             recipe__carts__user=user).values(
                 'ingredient__name',
                 'ingredient__measurement_unit'
-        ).annotate(amount=Sum('amount')).order_by()
+        ).annotate(amount=Sum('amount'))
 
         for id, data in enumerate(shopping_list, start=1):
             pdf.drawString(50, height, text=(
