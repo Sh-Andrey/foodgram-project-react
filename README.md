@@ -51,6 +51,8 @@ http://<ваш ip>/api/docs/
 ```
 http://51.250.28.255/
 ```
+Чтоб войти в админку логин: admin@ad.ru пароль: admin
+
 ## Использование CI/CD:
 Для использования Continuous Integration и Continuous Deployment необходимо в репозитории на GitHub прописать Secrets - переменные доступа к вашим сервисам. Переменые прописаны в workflows/yamdb_workflow.yaml:
 ```
