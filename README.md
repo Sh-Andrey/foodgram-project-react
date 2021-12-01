@@ -12,23 +12,17 @@ CI/CD, Docker, Nginx, YandexCloud
 ### Установить Docker и Docker-compose:
 Для работы с проектом должен быть установлен Docker и docker-compose. Эта команда скачает скрипт для установки докера:
 ```
-curl -fsSL https://get.docker.com -o get-docker.sh
-```
-Эта команда запустит его:
-```
-sh get-docker.sh
+curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
 ```
 Установка docker-compose:
 ```
 sudo apt install docker-compose
 ```
-
 ### Склонировать проекст с GitHub:
 ```
 git@github.com:Sh-Andrey/foodgram-project-react.git
 ```
-
-### Перейти в папку infra и создать файл .env по образцу .env.example.
+### Перейти в папку infra и создать файл .env:
 ```
 SECRET_KEY=' '
 DB_ENGINE=django.db.backends.postgresql
@@ -38,31 +32,25 @@ POSTGRES_PASSWORD=postgres
 POSTGRES_HOST=db
 POSTGRES_PORT=5432
 DEBUG=False
-HOSTS_LIST=127.0.0.1, localhost
+HOSTS_LIST=*
 ```
 ### Запуск контейнеров:
 - Перейдите в папку infra и запустите команду:
 ```
-sudo docker-compose-local up -d
-```
-- После сборки всех контейнеров нужно запустить скрип install.sh:
-```
-docker-compose exec backend bash install.sh
+sudo docker-compose up -d && docker-compose exec backend bash install.sh
 ```
 ### Проект запущен:
 ```
-http://<ip>/
+http://<ваш ip>/
 ```
 ### Документация:
 ```
-http://<ip>/api/docs/
+http://<ваш ip>/api/docs/
 ```
-
 ### Уже развернутый проект можно посмотреть по ссылке:
 ```
-http://51.250.23.23/
+http://51.250.28.255/
 ```
-
 ## Использование CI/CD:
 Для использования Continuous Integration и Continuous Deployment необходимо в репозитории на GitHub прописать Secrets - переменные доступа к вашим сервисам. Переменые прописаны в workflows/yamdb_workflow.yaml:
 ```
@@ -74,7 +62,7 @@ POSTGRES_PASSWORD=postgres
 POSTGRES_HOST=db
 POSTGRES_PORT=5432
 DEBUG=False / True
-HOSTS_LIST=127.0.0.1, backend, 51.250.23.23
+HOSTS_LIST=*
 
 DOCKER_PASSWORD=<пароль DockerHub>
 DOCKER_USERNAME=<имя пользователя DockerHub>
@@ -87,4 +75,13 @@ PASSPHRASE=<пароль для сервера, если он установле
 
 TELEGRAM_TO=<ID своего телеграм-аккаунта>
 TELEGRAM_TOKEN=<токен вашего бота>
+```
+### Скопируйте подготовленные файлы docker-compose.yaml и nginx/default.conf из вашего проекта на сервер в home/<ваш_username>/docker-compose.yaml и home/<ваш_username>/nginx/default.conf соответственно. Введите команду из корневой папки проекта:
+```
+scp docker-compose.yml <username>@<host>:/home/<username>/docker-compose.yml
+scp nginx.conf <username>@<host>:/home/<username>/
+```
+### После успешного деплоя, запустите скрипт:
+```
+docker-compose exec backend bash install.sh
 ```
