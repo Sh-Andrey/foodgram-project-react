@@ -77,7 +77,6 @@ class Recipe(models.Model):
     def __str__(self):
         return self.name
 
-
 class Cart(models.Model):
     user = models.OneToOneField(
         User,
@@ -91,11 +90,12 @@ class Cart(models.Model):
         verbose_name='Рецепт в списке покупок'
     )
 
+
     class Meta:
         constraints = [
             UniqueConstraint(
-                fields=['user', 'recipe'],
-                name='unique_cart'
+                fields=['user'],
+                name='unique_user'
             )
         ]
         verbose_name = 'Список покупок'
