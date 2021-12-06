@@ -91,7 +91,6 @@ class Cart(models.Model):
         verbose_name='Рецепт в списке покупок'
     )
 
-
     class Meta:
         constraints = [
             UniqueConstraint(
